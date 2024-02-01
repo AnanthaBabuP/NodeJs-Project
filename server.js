@@ -1,23 +1,57 @@
-// server.js
+// SERVER.js
 const express = require('express');
-const path = require('path');
+const session = require('express-session');
 const bodyParser = require('body-parser');
-require('dotenv').config();
+const path = require('path');
+const dbService = require('./src/Common/DBConnection');
+const authController = require('./src/controllers/Authentication/authController');
 
 const app = express();
-const PORT = process.env.PORT || 3012;
 
-// Middleware
+app.use(session({
+    secret: 'your_secret_key',
+    resave: false,
+    saveUninitialized: true
+}));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'src', 'views'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'src/views'));
+
+// Connect to MongoDB
+dbService.connect();
 
 // Routes
-const authController = require('./src/controllers/authController');
-app.use('/', authController);
-
-// Start server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+app.get('/login', (req, res) => {
+    res.render('Login/login');
 });
+
+app.get('/loginFail', (req, res) => {
+    res.render('Fail/fail');
+});
+
+app.post('/login', authController.login);
+
+// Middleware to check if user is authenticated
+function requireLogin(req, res, next) {
+    if (req.session && req.session.user) {
+        return next();
+    } else {
+        return res.redirect('/login');
+    }
+}
+
+// Dashboard route
+app.get('/dashboard', requireLogin, (req, res) => {
+    const username = req.session.user; // Retrieve username from session
+    res.render('Dashboard/dashboard', { username });
+});
+
+// Logout route
+app.get('/logout', authController.logout);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
