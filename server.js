@@ -1,47 +1,23 @@
-const express = require("express");
-const dotenv = require("dotenv").config();
-const path = require('path'); // Import the 'path' module
+// server.js
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+require('dotenv').config();
+
 const app = express();
+const PORT = process.env.PORT || 3012;
 
-const port = process.env.PORT || 5000;
-
-// check with Server Port 
-app.listen(port, () =>{
-    console.log(`server Runing Port on ${port}`)
-})
-
-// How to call to web application
-app.get('/init', (req,res) => {
-    res.send("Get All Content")
-})
-
-// Middleware setup
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'src', 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
-app.get('/', (req, res) => {
-  res.render(path.join(__dirname, 'src', 'views', 'Login', 'index'));
+const authController = require('./src/controllers/authController');
+app.use('/', authController);
+
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
-
-// // Set the views directory to the 'src/views' folder
-// app.set('views', path.join(__dirname, 'src', 'views'));
-// app.use(express.static(path.join(__dirname, 'public')));
-
-// app.get('/', (req, res) => {
-//     res.render('./Login/index', { user: req.user });
-// });
-
-// // Middleware setup
-// app.set('view engine', 'ejs');
-// app.use(express.static('public'));
-
-// // Routes
-// app.get('/', (req, res) => {
-//     res.render('index');
-// });
-
-// // Start the server
-// app.listen(port, () => {
-//     console.log(`Server is listening at http://localhost:${port}`);
-// });
