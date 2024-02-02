@@ -6,14 +6,8 @@ const dbName = 'loginDatabase';
 
 let db;
 
+// Check Connection
 async function connect() {
-    // try {
-    //     const client = await MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
-    //     db = client.db(dbName);
-    //     console.log('Connected to MongoDB');
-    // } catch (error) {
-    //     console.error('Error connecting to MongoDB:', error);
-    // }
     try {
         const client = new MongoClient(url);
         await client.connect();
