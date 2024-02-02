@@ -1,37 +1,4 @@
-// services/Authentication/authService.js
 const bcrypt = require('bcrypt');
-
-// // Mock user data (in a real application, this would come from a database)
-// const users = [
-//     { username: 'user1', passwordHash: '$2b$10$SH04rlMZpdvIn7.FsSEdVe/cGqhcfnOxqfZfzYrVTUm7flQK9ryKO' }, // hashed password: 'password1'
-//     { username: 'user2', passwordHash: '$2b$10$Fh6d6r7hxPn2POW/MCTZoOpqjtUeMT02sfysHwByVhrG3Hd8Btjzq' }  // hashed password: 'password2'
-// ];
-
-// function authenticate(username, password) {
-//     const user = users.find(user => user.username === username);
-//     if (user && bcrypt.compareSync(password, user.passwordHash)) {
-//         return user;
-//     } else {
-//         return null;
-//     }
-// }
-
-// Mock user data (in a real application, this would come from a database)
-// const users = [
-//     { username: 'user1', password: 'password1' },
-//     { username: 'user2', password: 'password2' }
-// ];
-
-// // Authenticate user
-// function authenticate(username, password) {
-//     return users.find(user => user.username === username && user.password === password);
-// }
-
-// module.exports = {
-//     authenticate
-// };
-
-// src/services/Authentication/AuthService.js
 const dbService = require('../../Common/DBConnection');
 
 // Function to hash the password
