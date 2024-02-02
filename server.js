@@ -3,8 +3,10 @@ const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
+require('dotenv').config();
 const dbService = require('./src/Common/DBConnection');
 const authController = require('./src/controllers/Authentication/authController');
+const DataString = require('./src/Common/DataStringStoreage');
 
 const app = express();
 
@@ -23,11 +25,13 @@ dbService.connect();
 
 // Routes
 app.get('/login', (req, res) => {
-    res.render('Login/login');
+    res.render('Login/login', { message: DataString.commonObject.EmptyString });
 });
 
 app.get('/loginFail', (req, res) => {
-    res.render('Fail/fail');
+    res.render('Login/login', { message: DataString.commonObject.InvalidLogin});
+
+    
 });
 
 app.post('/login', authController.login);
@@ -52,6 +56,7 @@ app.get('/logout', authController.logout);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on http://localhost:${PORT}/login port `);
+    
 });
 
