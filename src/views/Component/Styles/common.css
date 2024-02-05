@@ -1,0 +1,78 @@
+
+body {
+    /* Set background image */
+    background-image: url('https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=1920');
+    /* Center and cover the background image */
+    background-position: center;
+    background-size: cover;
+    /* Apply a blur effect to the background */
+    backdrop-filter: blur(5px);
+    /* Set minimum height to fill the screen */
+    min-height: 100vh;
+    /* Remove default margin and padding */
+    margin: 0;
+    padding: 0;
+    /* Display content in flexbox and center it vertically */
+    display: flex;
+    flex-direction: column;
+}
+
+.error_show {
+    /* Set background color and padding */
+    padding: 10px;
+    align-self: center;
+}
+
+.container {
+    /* Set background color and padding */
+    padding: 0px;
+    /* Center the container horizontally and vertically */
+    margin: auto;
+    margin-top: 10px;
+    align-self: center;
+}
+
+.footer {
+    /* Set background color and padding */
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Additional styles specific to header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 10px;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+.logo img {
+    width: 50%;
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+nav ul li:first-child {
+    margin-right: 0;
+}

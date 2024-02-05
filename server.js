@@ -10,6 +10,9 @@ const DataString = require('./src/Common/DataStringStoreage');
 
 const app = express();
 
+// Set up static files directory
+app.use(express.static('src'));
+
 app.use(session({
     secret: 'your_secret_key',
     resave: false,
@@ -24,6 +27,20 @@ app.set('views', path.join(__dirname, 'src/views'));
 dbService.connect();
 
 // Routes
+// Home screen
+app.get('/', (req, res) => {
+    res.render('Component/home');
+});
+
+app.get('/about', (req, res) => {
+    res.render('Component/about');
+});
+
+app.get('/contact', (req, res) => {
+    res.render('Component/contact');
+});
+
+// Login Screen
 app.get('/login', (req, res) => {
     res.render('Login/login', { message: DataString.commonObject.EmptyString });
 });

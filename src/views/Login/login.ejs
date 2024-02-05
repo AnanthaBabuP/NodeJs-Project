@@ -6,6 +6,7 @@
     <title>Login</title>
     <!-- Include Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../Styles/header.css">
     <style>
         /* Add custom styles here */
         body {
@@ -42,11 +43,11 @@
             align-self: center;
         }
         .header {
-            /* Set background color and padding */
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-            padding: 10px 0;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8f9fa; /* Header background color */
+            padding: 10px;
         }
         .footer {
             /* Set background color and padding */
@@ -58,13 +59,34 @@
             width: 100%;
             box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
         }
+        .logo {
+            width: 150px; /* Adjust the width as needed */
+            height: auto;
+        }
+        .logo img {
+            width: 50%;
+            height: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-left: 20px; /* Adjust spacing between navigation items */
+        }
+
+        nav ul li:first-child {
+            margin-right: 0;
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <div class="header">
-        <h1>Your Logo</h1>
-    </div>
+    <%- include('../Component/Header.ejs') %>
 
     <!-- Message -->
     <div class="error_show">
@@ -100,9 +122,7 @@
     </div>
 
     <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2022 Your Company</p>
-    </div>
+    <%- include('../Component/footer.ejs') %>
 
     <!-- Include Bootstrap JS (Optional) -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
