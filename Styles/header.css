@@ -1,0 +1,42 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa; /* Header background color */
+    padding: 10px;
+}
+
+.logo {
+    width: 200px; /* Adjust the width as needed */
+    height: auto;
+    margin-left: 5px;
+}
+
+.logo img {
+    width: 10px;
+    height: 10px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 20px; /* Adjust spacing between navigation items */
+}
+
+nav ul li:first-child {
+    margin-left: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333; /* Link color */
+}
+
+nav ul li a:hover {
+    color: #000; /* Hover color */
+}
