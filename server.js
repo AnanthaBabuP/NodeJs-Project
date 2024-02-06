@@ -7,6 +7,9 @@ require('dotenv').config();
 const dbService = require('./src/Common/DBConnection');
 const authController = require('./src/controllers/Authentication/authController');
 const DataString = require('./src/Common/DataStringStoreage');
+const itemController = require('./src/controllers/List/listController');
+const register = require('./src/controllers/Register/employeeRegisterController');
+
 
 const app = express();
 
@@ -18,6 +21,15 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+
+// Middleware to check if user is authenticated
+function requireLogin(req, res, next) {
+    if (req.session && req.session.user) {
+        return next();
+    } else {
+        return res.redirect('/login');
+    }
+}
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
@@ -47,20 +59,22 @@ app.get('/login', (req, res) => {
 
 app.get('/loginFail', (req, res) => {
     res.render('Login/login', { message: DataString.commonObject.InvalidLogin});
-
-    
 });
+
+// Routes
+app.get('/list', itemController.getList);
 
 app.post('/login', authController.login);
 
-// Middleware to check if user is authenticated
-function requireLogin(req, res, next) {
-    if (req.session && req.session.user) {
-        return next();
-    } else {
-        return res.redirect('/login');
-    }
-}
+// Register route
+// Handle form submission for register route
+app.post('/register', register);
+
+// Render the register form
+app.get('/register', (req, res) => {
+    res.render('Register/employeeRegister');
+});
+
 
 // Dashboard route
 app.get('/dashboard', requireLogin, (req, res) => {
@@ -73,7 +87,7 @@ app.get('/logout', authController.logout);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}/login port `);
+    console.log(`Server is running on http://localhost:${PORT} port `);
     
 });
 

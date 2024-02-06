@@ -22,3 +22,4 @@
 ## 1004 commit FOR Login Form With Data Retrive in MONGODB Source
 ## 1005 commit FOR Login With Validation with using style and set background for image.
 ## 1006 commit FOR Set with style and Home page Set for home,about and contact.
+## 1007 commit FOR view and Register Process Complited.

@@ -1,0 +1,100 @@
+<!-- views/list.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=1920');
+            background-position: center;
+            background-size: cover;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            padding: 10px;
+            margin: auto;
+            margin-top: 10px;
+            align-self: center;
+        }
+        .footer {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline-block;
+            margin-left: 20px;
+        }
+        nav ul li:first-child {
+            margin-right: 0;
+        }
+        .table.table-striped {
+            background-color: #f2f2f2; /* Set your desired background color */
+        }
+        .mt-4 {
+        color: #ffffff; /* Font color */
+    }
+    </style>
+</head>
+<body>
+   <!-- Header -->
+   <%- include('../Component/Header.ejs') %>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1 class="mt-4">Item List</h1>
+        <!-- Search form -->
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Employee Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Qualification</th>
+                    <th>Role</th>
+                    <th>E-Mail</th>
+                    <th>Current Employee</th>
+                </tr>
+            </thead>
+            <tbody id="itemTableBody">
+                <% items.forEach(item => { %>
+                    <tr>
+                        <td><%= item.id %></td>
+                        <td><%= item.name %></td>
+                        <td><%= item.age %></td>
+                        <td><%= item.gender === 0 ? 'Female' : 'Male' %></td>
+                        <td><%= item.qualification %></td>
+                        <td><%= item.role %></td>
+                        <td><%= item.mail_id %></td>
+                        <td><%= item.current_employee === 0 ? 'No' : 'Yes' %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+     <!-- Footer -->
+     <%- include('../Component/footer.ejs') %>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
