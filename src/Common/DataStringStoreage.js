@@ -2,7 +2,14 @@
  * Common Default String Variable
  */
  const commonStringObject = {
-    InvalidLogin : 'Please Enter Valid UserName And Password!!',
+    InvalidLogin : 'Please Enter Valid UserName And Password !!',
+    LOGIN_SUCCESS : 'Login Successfully !!',
+    INSERT_SUCCESS : 'Insert Successfully !!',
+    UPDATE_SUCCESS : 'Update Successfully !!',
+    DELETE_SUCCESS : 'Delete Successfully !!',
+    
+    UPDATE_FAIL : 'Update Faill !!',
+    DELETE_FAIL : 'Delete Faill !!',
     EmptyString : ''
 };
 

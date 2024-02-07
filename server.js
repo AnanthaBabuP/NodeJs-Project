@@ -9,6 +9,7 @@ const authController = require('./src/controllers/Authentication/authController'
 const DataString = require('./src/Common/DataStringStoreage');
 const itemController = require('./src/controllers/List/listController');
 const register = require('./src/controllers/Register/employeeRegisterController');
+const listEditDelete = require('./src/controllers/List/updateDeleteController');
 
 
 const app = express();
@@ -77,6 +78,11 @@ app.post('/register', register);
 app.get('/register', (req, res) => {
     res.render('Register/employeeRegister');
 });
+
+// Add routes for editing and deleting items
+app.get('/edit/:id', listEditDelete.getEdit);
+
+app.post('/delete', listEditDelete.employeeDataDelete);
 
 
 // Dashboard route
