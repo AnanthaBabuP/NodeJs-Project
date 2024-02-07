@@ -28,3 +28,8 @@
     background-color: #5e5d5f; /* Set the background color of disabled pagination buttons */
     pointer-events: none; /* Disable pointer events for disabled buttons */
 }
+.pagination-container {
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+}

@@ -1,0 +1,54 @@
+<div class="pagination-container">
+    <!-- Pagination controls -->
+    <% if (totalPages > 1) { %>
+        <ul class="pagination-list">
+            <% if (currentPage > 1) { %>
+                <li class="pagination-item">
+                    <form action="/list" method="POST">
+                        <input type="hidden" name="page" value="<%= 1 %>">
+                        <button type="submit" class="pagination-link <%= currentPage === 1 ? 'disabled' : '' %>"><<</button>
+                    </form>
+                </li>
+                <li class="pagination-item">
+                    <form action="/list" method="POST">
+                        <input type="hidden" name="page" value="<%= currentPage > 1 ? currentPage - 1 : 1 %>">
+                        <button type="submit" class="pagination-link <%= currentPage === 1 ? 'disabled' : '' %>"><</button>
+                    </form>
+                </li>
+                <li class="pagination-item">
+                    <form action="/list" method="POST">
+                        <input type="hidden" name="page" value="<%= currentPage - 1 %>">
+                        <button type="submit" class="pagination-link"><%= currentPage - 1 %></button>
+                    </form>
+                </li>
+            <% } %>
+            
+            <li class="pagination-item">
+                <form action="/list" method="POST">
+                    <input type="hidden" name="page" value="<%= currentPage %>">
+                    <button type="submit" class="pagination-link active"><%= currentPage %></button>
+                </form>
+            </li>
+            <% if (currentPage < totalPages) { %>
+                <li class="pagination-item">
+                    <form action="/list" method="POST">
+                        <input type="hidden" name="page" value="<%= currentPage + 1 %>">
+                        <button type="submit" class="pagination-link"><%= currentPage + 1 %></button>
+                    </form>
+                </li>
+                <li class="pagination-item">
+                    <form action="/list" method="POST">
+                        <input type="hidden" name="page" value="<%= currentPage < totalPages ? currentPage + 1 : totalPages %>">
+                        <button type="submit" class="pagination-link <%= currentPage === totalPages ? 'disabled' : '' %>">></button>
+                    </form>
+                </li>
+                <li class="pagination-item">
+                    <form action="/list" method="POST">
+                        <input type="hidden" name="page" value="<%= totalPages %>">
+                        <button type="submit" class="pagination-link <%= currentPage === totalPages ? 'disabled' : '' %>">>></button>
+                    </form>
+                </li>
+            <% } %>
+        </ul>
+    <% } %>
+</div>
