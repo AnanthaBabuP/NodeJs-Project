@@ -11,7 +11,6 @@ router.get('/register', (req, res) => {
 // Handle form submission
 router.post('/register', async (req, res) => {
     try {
-        console.log("Post Register !!")
         const employeeData = req.body;
         await employeeService.registerEmployee(employeeData);
         res.redirect('/list'); // Redirect to the register page after successful registration

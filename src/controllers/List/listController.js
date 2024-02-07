@@ -5,10 +5,8 @@ const commonData = require('../../Common/DataStringStoreage');
 
 exports.getList = async (req, res) => {
     try {
-        console.log("This is controller!")
         const currentPage  = parseInt(req.body.page) || 1;
-        console.log("COUNT :"+parseInt(req.body.page));
-        const pageSize = commonData.commonIntObject.PAGE_COUNT_01; // Number of items per page
+        const pageSize = commonData.commonIntObject.PAGE_COUNT_05; // Number of items per page
         const startIndex = (currentPage  - 1) * pageSize;
         const endIndex = currentPage  * pageSize;
 

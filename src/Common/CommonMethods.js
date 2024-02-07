@@ -37,7 +37,6 @@ const calculateTotalPages = async (itemsData, pageSize) => {
         
         const totalItems = itemsData.length;
         const totalPages = Math.ceil(totalItems / pageSize);
-        console.log("total page count : "+ totalPages);
         return totalPages;
     } catch (error) {
         console.error('Error:', error);
