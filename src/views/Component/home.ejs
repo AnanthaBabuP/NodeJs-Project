@@ -1,0 +1,47 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="../../Style/header_and_footer.css">
+
+</head>
+<body>
+    <!-- Include the Header Component -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Sample Logo -->
+        <img src="https://www.freeiconspng.com/uploads/blue-eye-3b-png-3.png" alt="Your Logo" width="30" height="30" class="d-inline-block align-top">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary" href="/register">Register</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content container font_white">
+        <h1>Welcome to the Home Page</h1>
+        <p>This is the content of the home page.</p>
+    </div>
+
+    <!-- Include the Footer Component -->
+    <%- include('./footer.ejs') %>
+
+    <script src="/scripts/main.js"></script> <!-- Link to your main JavaScript file -->
+</body>
+</html>
