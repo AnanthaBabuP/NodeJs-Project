@@ -7,51 +7,9 @@
     <title>Item List</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-image: url('https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=1920');
-            background-position: center;
-            background-size: cover;
-            min-height: 100vh;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-        }
-        .container {
-            padding: 10px;
-            margin: auto;
-            margin-top: 10px;
-            align-self: center;
-        }
-        .footer {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px 0;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-        }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline-block;
-            margin-left: 20px;
-        }
-        nav ul li:first-child {
-            margin-right: 0;
-        }
-        .table.table-striped {
-            background-color: #f2f2f2; /* Set your desired background color */
-        }
-        .mt-4 {
-        color: #ffffff; /* Font color */
-    }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../../Style/paginationStyles.css">
+    <link rel="stylesheet" type="text/css" href="../../Style/header_and_footer.css">
+    <link rel="stylesheet" type="text/css" href="../../Style/table.css">
 </head>
 <body>
    <!-- Header -->
@@ -59,8 +17,48 @@
 
     <!-- Main Content -->
     <div class="container">
-        <h1 class="mt-4">Item List</h1>
-        <!-- Search form -->
+        <h1 class="mt-4 font_white">Item List</h1>
+        <!-- Pagination controls -->
+        <div class="pagination" style="text-align: right; display: flex; justify-content: flex-end;">
+            <% if (totalPages > 1) { %>
+                <ul class="pagination-list" style="display: inline-flex; list-style: none; padding: 0; margin: 0;">
+                    <li class="pagination-item">
+                        <form action="/list" method="POST">
+                            <input type="hidden" name="page" value="<%= 1 %>">
+                            <button type="submit" class="pagination-link <%= currentPage === 1 ? 'disabled' : '' %>"><<</button>
+                        </form>
+                    </li>
+                    <li class="pagination-item">
+                        <form action="/list" method="POST">
+                            <input type="hidden" name="page" value="<%= currentPage > 1 ? currentPage - 1 : 1 %>">
+                            <button type="submit" class="pagination-link <%= currentPage === 1 ? 'disabled' : '' %>"><</button>
+                        </form>
+                    </li>
+                    <% for(let i = 1; i <= totalPages; i++) { %>
+                        <li class="pagination-item">
+                            <form action="/list" method="POST">
+                                <input type="hidden" name="page" value="<%= i %>">
+                                <button type="submit" class="pagination-link <%= currentPage === i ? 'active' : '' %>"><%= i %></button>
+                            </form>
+                        </li>
+                    <% } %>
+                    <li class="pagination-item">
+                        <form action="/list" method="POST">
+                            <input type="hidden" name="page" value="<%= currentPage < totalPages ? currentPage + 1 : totalPages %>">
+                            <button type="submit" class="pagination-link <%= currentPage === totalPages ? 'disabled' : '' %>">></button>
+                        </form>
+                    </li>
+                    <li class="pagination-item">
+                        <form action="/list" method="POST">
+                            <input type="hidden" name="page" value="<%= totalPages %>">
+                            <button type="submit" class="pagination-link <%= currentPage === totalPages ? 'disabled' : '' %>">>></button>
+                        </form>
+                    </li>
+                </ul>
+            <% } %>
+        </div>
+        
+        <!-- Display paginated items -->
         <table class="table table-striped">
             <thead class="thead-dark">
                 <tr>

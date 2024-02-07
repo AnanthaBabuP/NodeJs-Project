@@ -10,8 +10,6 @@ async function getAllItems() {
     }
     try {
         const items = await db.collection('user').find({}).toArray();
-        console.log("DB Contant");
-        console.log(items)
         return items;
     } catch (error) {
         console.error('Error fetching items:', error);

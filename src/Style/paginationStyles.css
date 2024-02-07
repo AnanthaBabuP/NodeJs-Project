@@ -1,0 +1,30 @@
+.pagination-list {
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.pagination-item {
+    margin-right: 5px; /* Adjust the spacing between pagination buttons */
+}
+.pagination-link {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #0c0c0c; /* Set the background color of pagination buttons */
+    color: #ffffff; /* Set the text color of pagination buttons */
+    border: 1px solid #709ed0;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+.pagination-link:hover {
+    background-color: #0056b3; /* Change the background color on hover */
+}
+.pagination-link.active {
+    background-color: #0056b3; /* Set the background color of active pagination buttons */
+}
+.pagination-link.disabled {
+    visibility: hidden;
+    background-color: #5e5d5f; /* Set the background color of disabled pagination buttons */
+    pointer-events: none; /* Disable pointer events for disabled buttons */
+}

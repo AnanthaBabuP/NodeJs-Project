@@ -23,3 +23,4 @@
 ## 1005 commit FOR Login With Validation with using style and set background for image.
 ## 1006 commit FOR Set with style and Home page Set for home,about and contact.
 ## 1007 commit FOR view and Register Process Complited.
+## 1008 commit FOR List Pagination And Style and Image are Declare As Common Method to Reduce code .

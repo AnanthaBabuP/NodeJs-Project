@@ -1,5 +1,11 @@
 const dbService = require('./DBConnection');
 
+/**
+ * Get MaxId Value
+ * @param {*} collectionName 
+ * @param {*} tableName 
+ * @returns 
+ */
 const getMaxId = async (collectionName, tableName) => {
     try {
         await dbService.dbNameWithConnect(collectionName);
@@ -20,7 +26,27 @@ const getMaxId = async (collectionName, tableName) => {
     }
 };
 
+/**
+ * Total count for Screen
+ * @param {*} itemsData 
+ * @param {*} pageSize 
+ * @returns 
+ */
+const calculateTotalPages = async (itemsData, pageSize) => {
+    try {
+        
+        const totalItems = itemsData.length;
+        const totalPages = Math.ceil(totalItems / pageSize);
+        console.log("total page count : "+ totalPages);
+        return totalPages;
+    } catch (error) {
+        console.error('Error:', error);
+        throw new Error('Error occurred while calculating total pages');
+    }
+};
+
 // Export the object and function
 module.exports = {
-    getMaxId
+    getMaxId,
+    calculateTotalPages
 };
