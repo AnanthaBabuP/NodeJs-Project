@@ -34,8 +34,8 @@ const getMaxId = async (collectionName, tableName) => {
  */
 const calculateTotalPages = async (itemsData, pageSize) => {
     try {
-        
         const totalItems = itemsData.length;
+        console.log("TotalCount :"+totalItems)
         const totalPages = Math.ceil(totalItems / pageSize);
         return totalPages;
     } catch (error) {

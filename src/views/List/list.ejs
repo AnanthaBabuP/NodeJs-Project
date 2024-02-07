@@ -17,7 +17,7 @@
 
     <!-- Main Content -->
     <div class="container">
-        <h1 class="mt-4 font_white">Item List</h1>
+        <h1 class="mt-4 font_white">Employee Details</h1>
         <!-- Pagination controls -->
         <%- include('../Pagination/pagination.ejs') %>
         <!-- Display paginated items -->
@@ -32,6 +32,7 @@
                     <th>Role</th>
                     <th>E-Mail</th>
                     <th>Current Employee</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody id="itemTableBody">
@@ -45,6 +46,17 @@
                         <td><%= item.role %></td>
                         <td><%= item.mail_id %></td>
                         <td><%= item.current_employee === 0 ? 'No' : 'Yes' %></td>
+                        <td>
+                            <div class="btn-group">
+                                <!-- Edit Button -->
+                                <a href="/edit/<%= item.id %>" class="btn btn-primary btn-sm">Edit</a>
+                                <!-- Delete Button -->
+                                <form id="deleteForm" action="/delete" method="POST">
+                                    <input type="hidden" id="itemId" name="itemId" value="<%= item.id %>">
+                                    <button type="submit" class="btn btn-danger btn-sm ml-2">Delete</button>
+                                </form>
+                            </div>
+                        </td>
                     </tr>
                 <% }); %>
             </tbody>
