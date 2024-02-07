@@ -54,15 +54,18 @@ app.get('/contact', (req, res) => {
 
 // Login Screen
 app.get('/login', (req, res) => {
-    res.render('Login/login', { message: DataString.commonObject.EmptyString });
+    res.render('Login/login', { message: DataString.commonStringObject.EmptyString });
 });
 
 app.get('/loginFail', (req, res) => {
-    res.render('Login/login', { message: DataString.commonObject.InvalidLogin});
+    res.render('Login/login', { message: DataString.commonStringObject.InvalidLogin});
 });
 
 // Routes
 app.get('/list', itemController.getList);
+
+// Routes
+app.post('/list', itemController.getList);
 
 app.post('/login', authController.login);
 

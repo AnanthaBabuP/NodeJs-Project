@@ -6,88 +6,12 @@
     <title>Login</title>
     <!-- Include Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../Styles/header.css">
-    <style>
-        /* Add custom styles here */
-        body {
-            /* Set background image */
-            background-image: url('https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=1920'); /* Specify your image URL */
-            /* Center and cover the background image */
-            background-position: center;
-            background-size: cover;
-            /* Apply a blur effect to the background */
-            backdrop-filter: blur(5px);
-            /* Set minimum height to fill the screen */
-            min-height: 100vh;
-            /* Remove default margin and padding */
-            margin: 0;
-            padding: 0;
-            /* Display content in flexbox and center it vertically */
-            display: flex;
-            flex-direction: column;
-        }
-        .error_show {
-            /* Set background color and padding */
-            padding: 10px;
-            align-self: center;
-        }
-        .container {
-            /* Set background color and padding */
-            /* background-color: rgba(255, 255, 255, 0.5); Semi-transparent white background */
-            padding: 0px;
-            /* Add box shadow for a subtle effect */
-            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
-            /* Center the container horizontally and vertically */
-            margin: auto;
-            margin-top: 10px;
-            align-self: center;
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #f8f9fa; /* Header background color */
-            padding: 10px;
-        }
-        .footer {
-            /* Set background color and padding */
-            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-            padding: 10px 0;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-        }
-        .logo {
-            width: 150px; /* Adjust the width as needed */
-            height: auto;
-        }
-        .logo img {
-            width: 50%;
-            height: auto;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline-block;
-            margin-left: 20px; /* Adjust spacing between navigation items */
-        }
-
-        nav ul li:first-child {
-            margin-right: 0;
-        }
-    </style>
+    <!-- /* Add custom styles here */ -->
+    <link rel="stylesheet" type="text/css" href="../../Style/header_and_footer.css">
 </head>
-<body>
+<body class="blur_5">
     <!-- Header -->
     <%- include('../Component/Header.ejs') %>
-
     <!-- Message -->
     <div class="error_show">
         <% if (message) { %>
@@ -113,7 +37,7 @@
                                 <label for="password">Password:</label>
                                 <input type="password" class="form-control" id="password" name="password" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="submit" class="btn btn-primary">Login</button> <a class="btn btn-primary" href="/register">Register</a>
                         </form>
                     </div>
                 </div>
