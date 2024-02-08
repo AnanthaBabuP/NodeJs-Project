@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Employee</title>
-    <!-- /* Add custom styles here */ -->
+    <title>Edit Employee</title>
+    <!-- Add custom styles here -->
     <link rel="stylesheet" type="text/css" href="../../Style/header_and_footer.css">
     <!-- Include Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -13,48 +13,66 @@
     <!-- Header -->
     <%- include('../Component/Header.ejs') %>
 
+    <div >
+        <div class="">
+            <% if (error) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+            <% } else if (info) { %>
+                <div class="alert alert-info" role="alert">
+                    <%= info %>
+                </div>
+            <% } %>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <div class="container mt-5">
         <div class="card">
             <div class="card-body">
-                <h2 class="card-title mb-4">Register Employee</h2>
-                <form action="/register" method="POST">
+                <h2 class="card-title mb-4">Edit Employee</h2>
+                <form action="/editConfirm" method="POST">
+                    <input type="hidden" class="form-control" id="id" name="id" value="<%= employee.id %>" required>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="name" class="col-form-label">Name:</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
+                            <input type="text" class="form-control" id="name" name="name" value="<%= employee.name %>" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="age" class="col-form-label">Age:</label>
-                            <input type="number" class="form-control" id="age" name="age" required>
+                            <input type="number" class="form-control" id="age" name="age" value="<%= employee.age %>" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="qualification" class="col-form-label">Qualification:</label>
-                            <input type="text" class="form-control" id="qualification" name="qualification" required>
+                            <input type="text" class="form-control" id="qualification" name="qualification" value="<%= employee.qualification %>" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="gender" class="col-form-label">Gender:</label>
                             <select class="form-control" id="gender" name="gender" required>
-                                <option value="1">Male</option>
-                                <option value="0">Female</option>
+                                <option value="1" <% if (employee.gender === 1) { %>selected<% } %>>Male</option>
+                                <option value="0" <% if (employee.gender === 0) { %>selected<% } %>>Female</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="role" class="col-form-label">Role:</label>
-                            <input type="text" class="form-control" id="role" name="role" required>
+                            <input type="text" class="form-control" id="role" name="role" value="<%= employee.role %>" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="mail_id" class="col-form-label">Email:</label>
-                            <input type="email" class="form-control" id="mail_id" name="mail_id" required>
+                            <input type="email" class="form-control" id="mail_id" name="mail_id" value="<%= employee.mail_id %>" required>
                         </div>
                     </div>
-                    <!-- Hidden field for current_work -->
-                    <input type="hidden" name="currend_employee" value="1">
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <div class="form-row">
+                        <!-- Hidden field for current_work -->
+                        <input type="hidden" class="form-control" name="currend_employee" value="<%= employee.currend_employee %>">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary mt-2">Update</button>
                 </form>
             </div>
         </div>

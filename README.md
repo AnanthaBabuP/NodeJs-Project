@@ -24,3 +24,4 @@
 ## 1006 commit FOR Set with style and Home page Set for home,about and contact.
 ## 1007 commit FOR view and Register Process Complited.
 ## 1008 commit FOR List Pagination And Style and Image are Declare As Common Method to Reduce code .
+## 1010 commit FOR List EDIT,DELETE Process .
