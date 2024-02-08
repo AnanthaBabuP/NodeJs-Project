@@ -79,9 +79,10 @@ app.get('/register', (req, res) => {
     res.render('Register/employeeRegister');
 });
 
-// Add routes for editing and deleting items
-app.get('/edit/:id', listEditDelete.getEdit);
 
+// Add routes for editing and deleting items
+app.post('/edit', listEditDelete.getEdit);
+app.post('/editConfirm', listEditDelete.confirmEdit);
 app.post('/delete', listEditDelete.employeeDataDelete);
 
 

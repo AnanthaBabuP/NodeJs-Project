@@ -1,0 +1,78 @@
+const dbService = require('../../Common/DBConnection');
+
+// Function to delete a user by username
+async function deleteUser(employeeId) {
+    await dbService.dbNameWithConnect('office');
+    const db = dbService.getDb();
+    if (!db) {
+        throw new Error('Database connection error');
+    }
+
+    try {
+        const collection = db.collection('user');
+        // Find and delete the user by username
+        const result = await collection.findOne({ id: employeeId });
+        
+        console.log(result.currend_employee);
+        if (!result) {
+            throw new Error('User not found');
+        }
+        result.currend_employee = 0;
+        await collection.updateOne({ id: employeeId },{$set : {currend_employee : 0}});
+
+        return true; // User deleted successfully
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        throw new Error('User deletion error');
+    }
+}
+
+ $(document).ready(function() {
+            // Edit button click event
+            $('#editButton').click(function() {
+                var itemId = document.getElementById('itemId').value;
+                console.log(itemId);
+                $.ajax({
+                    url: '/edit',
+                    type: 'POST',
+                    data: { itemId: itemId },
+                    success: function(response) {
+                        // Handle the edit form response
+                        // For example, you can show the edit form in a modal
+                        console.log("URL : "+response.url);
+                        window.location.href = '/editConfirm';
+                        console.log('Edit form loaded');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error loading edit form:', error);
+                    }
+                });
+            });
+        });
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Edit button click event
+            $('#editButton').click(function() {
+                var itemId = document.getElementById('itemId').value;
+                console.log(itemId);
+                $.ajax({
+                    url: '/edit',
+                    type: 'POST',
+                    data: { itemId: itemId },
+                    success: function(response) {
+                        // Handle the edit form response
+                        // For example, you can show the edit form in a modal
+                        console.log(response);
+                        
+                        window.location.href = '/editConfirm?'+response;
+                        console.log('Edit form loaded');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error loading edit form:', error);
+                    }
+                });
+            });
+        });
+    </script>
